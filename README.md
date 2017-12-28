@@ -1,6 +1,9 @@
 # dotfiles
 
-These are some of my config files.
+These are some of my config files. On my system, these usually reside on a `~/etc` directory and are linked on the corresponding place, like so:
+
+```ln -s etc/vimrc .vimrc
+```
 
 ## bar.sh and lemon.sh
 
