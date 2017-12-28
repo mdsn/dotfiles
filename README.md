@@ -2,7 +2,8 @@
 
 These are some of my config files. On my system, these usually reside on a `~/etc` directory and are linked on the corresponding place, like so:
 
-```ln -s etc/vimrc .vimrc
+```
+ln -s etc/vimrc .vimrc
 ```
 
 ## bar.sh and lemon.sh
@@ -24,7 +25,8 @@ Basic bindings:
 
 The user's coordinates need to be filled in on the `[manual]` section for redshift to decide the display temperature. For example:
 
-```[manual]
+```
+[manual]
 lat=64.12
 lon=-21.81
 ```
