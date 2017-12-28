@@ -1,0 +1,52 @@
+super + r
+    pkill -USR1 -x sxhkd
+
+super + Return
+    st-vga8 -e tmux
+
+super + shift + Return
+    st-vga8 -e tmux a
+
+super + p
+    show-dmenu
+
+super + m
+    bspc desktop -l next
+
+super + g
+    bspc node -s biggest
+
+super + Tab
+    bspc desktop -f last
+
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+# preselections
+
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+super + ctrl + space
+    bspc node -p cancel
+
+# move/resize
+
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+super + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20, 0 -20,20 0}
+
