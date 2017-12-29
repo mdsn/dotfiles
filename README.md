@@ -61,19 +61,19 @@ This zshrc has a very basic prompt. It displays the current zle vi mode on the r
 
 Uses `vim-plug` for plugin management. Sets up obvious quality of life options. Drops all backups and temporary files into a `~/tmp` directory. The leader key is `space`.
 
-Some bindings (keys bound with `leader` have a space before). These are on normal mode, unless stated otherwise:
+Some bindings (keys bound with `leader` have a `_` before). These are on normal mode, unless stated otherwise:
 - `ñ` is equivalent to `:`. It's incredibly convenient to have a `:` key that doesn't require pressing shift. And `ñ` is never used in vim anyway because most people don't have it.
-- ` q` open the command line window
+- `_q` open the command line window
 - `<BS>` (that's backspace) switch to the previous buffer
-- ` z` close the preview window
-- `  ` (that's space-space) clear the search highlight
-- ` n` open a scratch buffer that doesn't show up on the buffer list and doesn't have a swap file. I stole this from a reddit comment
-- ` w` toggle whitespace display
-- ` r` toggle line wrap
+- `_z` close the preview window
+- `__` (that's space-space) clear the search highlight
+- `_n` open a scratch buffer that doesn't show up on the buffer list and doesn't have a swap file. I stole this from a reddit comment
+- `_w` toggle whitespace display
+- `_r` toggle line wrap
 - `jk` go to normal mode. Works on insert, visual, and command modes.
 - `^h/^j/^k/^l` navigate windows.
-- ` m` split the current buffer into a new tab
-- ` k` close the current tab
-- ` 1/2/3/4/5` quick switch to the nth tab.
+- `_m` split the current buffer into a new tab
+- `_k` close the current tab
+- `_1/2/3/4/5` quick switch to the nth tab.
 
-For C and C++ files, `:make!` is bound to `<F5>` and ` /` goes to the next semicolon in the line.
+For C and C++ files, `:make!` is bound to `<F5>` and `_/` goes to the next semicolon in the line.
