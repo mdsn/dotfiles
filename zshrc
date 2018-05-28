@@ -41,6 +41,7 @@ alias dhi=" dirs -v"
 
 alias ga=" git add"
 alias gb=" git branch"
+alias gpr=" git pull --rebase"
 alias gc="git commit"
 alias gco="git checkout"
 alias g-="git checkout -"
@@ -48,13 +49,16 @@ alias gd=" git diff"
 alias gdc=" git diff --cached"
 alias gs=" git status --short"
 alias gi=" git show"
-alias g1=" git log --format=\"%Cgreen%h%Creset %s %Cblue%ar%Creset %Cred%D%Creset\""
+alias gl="git log --oneline"
 
 alias ls=" ls -Gh"
 alias l=" ls -l"
 alias s=ssh
 alias v=vim
-alias pm=" python manage.py"
+
+alias pm="python unhaggle/manage.py"
+alias pmrs="pm runserver"
+alias pmmm="pm makemigrations"
 
 # Prompt
 autoload -U colors
@@ -89,3 +93,8 @@ function path_prompt() {
 
 RPROMPT='$(vi_mode_prompt) $(path_prompt)'
 PROMPT="%% "
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
