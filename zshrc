@@ -51,7 +51,7 @@ alias gs=" git status --short"
 alias gi=" git show"
 alias gl="git log --oneline"
 
-alias ls=" ls -Gh"
+alias ls=" ls -h"
 alias l=" ls -l"
 alias s=ssh
 alias v=vim

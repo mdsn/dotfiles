@@ -47,6 +47,7 @@ nnoremap <silent> <leader>n :SC<CR>
 nnoremap <leader>w :set list!<CR>
 nnoremap <silent> <leader>r :set wrap!<CR>
 nnoremap <silent> <leader>d :bp\|bd#<CR>
+nnoremap <leader>n :set number!<CR>
 
 inoremap jk <Esc>
 xnoremap jk <Esc>
@@ -89,8 +90,23 @@ Plug 'junegunn/goyo.vim'
   nnoremap <F11> :Goyo<CR>
   let g:goyo_height = 100
   let g:goyo_linenr = 1
+
+  function! s:goyo_enter()
+    silent !tmux set status off
+    set scrolloff=999
+    set colorcolumn=80
+  endfunction
+
+  function! s:goyo_leave()
+    silent !tmux set status on
+    set scrolloff=1
+  endfunction
+
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 Plug 'junegunn/limelight.vim'
-  nnoremap <F12> :Limelight!!<CR>
+  nnoremap <F10> :Limelight!!<CR>
 
 Plug 'morhetz/gruvbox'
   let g:gruvbox_contrast_light = "soft"
@@ -101,6 +117,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+  nnoremap <F12> :Gblame!<CR>
 Plug 'justinmk/vim-ipmotion'
   let g:ip_skipfold = 1
 Plug 'Konfekt/FastFold'
@@ -150,4 +167,12 @@ augroup vue
     autocmd!
     autocmd FileType vue,javascript syntax sync fromstart
     autocmd FileType vue,javascript setlocal ts=2 sw=2 expandtab
+augroup END
+
+augroup rust
+  set colorcolumn=100
+  autocmd!
+  autocmd FileType rust nnoremap <F5> :!cargo build <CR>
+  autocmd FileType rust nnoremap <F6> :!cargo check <CR>
+  autocmd FileType rust nnoremap <F7> :!cargo fmt <CR>
 augroup END

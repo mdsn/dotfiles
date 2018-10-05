@@ -20,5 +20,6 @@ bspc config paddingless_monocle true
 bspc config directional_focus_tightness low
 
 bspc rule -a feh state=floating
-bspc rule -a gimp state=floating
+bspc rule -a Gimp state=floating
 bspc rule -a display state=floating
+bspc rule -a audacious state=floating
