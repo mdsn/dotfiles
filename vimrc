@@ -73,7 +73,10 @@ if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading "$*"
   set grepformat=%f:%l:%c:%m
 
-  " let $FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob \"!.git/*\""
+  let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow
+    \ --glob "!.git/*"
+    \ --glob "!node_modules"
+    \ --glob "!*.pyc"'
 endif
 
 
@@ -161,6 +164,7 @@ augroup END
 augroup py
     autocmd!
     autocmd FileType python setlocal cc=80 ts=4 sw=4 expandtab
+    autocmd FileType python nnoremap <F7> :!isort %<CR>
 augroup END
 
 augroup vue
