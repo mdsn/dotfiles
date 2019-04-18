@@ -59,7 +59,7 @@ alias v=vim
 
 alias pm="python unhaggle/manage.py"
 alias pmrs="pm runserver"
-alias pmmm="pm makemigrations"
+alias pmmm="pm makemigrations --configuration MakeMigrationScript"
 
 # Prompt
 autoload -U colors
@@ -93,7 +93,8 @@ function path_prompt() {
 }
 
 RPROMPT='$(vi_mode_prompt) $(path_prompt)'
-PROMPT="%% "
+#PROMPT="%% "
+PROMPT="∴ "
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
