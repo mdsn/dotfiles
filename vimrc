@@ -1,5 +1,3 @@
-" vim: sw=2 ts=2 et:
-
 set scrolloff=1
 set number
 set isfname+=32
@@ -47,7 +45,7 @@ nnoremap <silent> <leader>n :SC<CR>
 nnoremap <leader>w :set list!<CR>
 nnoremap <silent> <leader>r :set wrap!<CR>
 nnoremap <silent> <leader>d :bp\|bd#<CR>
-nnoremap <leader>n :set number!<CR>
+nnoremap <leader>N :set number!<CR>
 
 inoremap jk <Esc>
 xnoremap jk <Esc>
@@ -56,6 +54,7 @@ cnoremap jk <C-c>
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <leader>c <C-w>c
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -79,8 +78,27 @@ if executable("rg")
     \ --glob "!*.pyc"'
 endif
 
-
 syntax on
+
+function! OnGit()
+  return FugitiveHead() != ''
+endfunction
+
+function! Branch()
+  if OnGit()
+      return ' ' . FugitiveHead() . ' '
+  else
+      return ' '
+endfunction
+
+set statusline=
+set statusline+=%n
+set statusline+=%{Branch()}
+set statusline+=%f
+set statusline+=%=
+set statusline+=%m%r%h%w
+set statusline+=\ %p%%
+set statusline+=%7L
 
 call plug#begin('~/.vim/plugged')
 
@@ -89,40 +107,24 @@ Plug 'junegunn/fzf.vim'
   nnoremap <leader>o :Files<CR>
   nnoremap <leader>l :Buffers<CR>
   nnoremap <leader>ñ :History<CR>
-Plug 'junegunn/goyo.vim'
-  nnoremap <F11> :Goyo<CR>
-  let g:goyo_height = 100
-  let g:goyo_linenr = 1
-
-  function! s:goyo_enter()
-    silent !tmux set status off
-    set scrolloff=999
-    set colorcolumn=80
-  endfunction
-
-  function! s:goyo_leave()
-    silent !tmux set status on
-    set scrolloff=1
-  endfunction
-
-  autocmd! User GoyoEnter nested call <SID>goyo_enter()
-  autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
 Plug 'junegunn/limelight.vim'
   nnoremap <F10> :Limelight!!<CR>
-
+Plug 'junegunn/vim-peekaboo'
 Plug 'morhetz/gruvbox'
   let g:gruvbox_contrast_light = "soft"
 Plug 'jacoborus/tender.vim'
-
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-  nnoremap <F12> :Gblame!<CR>
+  nnoremap <leader>gb :Gblame! --abbrev=8 --relative-date<CR>
+Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-ipmotion'
   let g:ip_skipfold = 1
+Plug 'junegunn/vim-after-object'
+  autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'Konfekt/FastFold'
 Plug 'romainl/vim-qf'
   nmap Q <Plug>QfCtoggle
@@ -140,7 +142,6 @@ Plug 'romainl/vim-qf'
       autocmd!
       autocmd FileType qf setlocal wrap nonumber
   augroup END
-
  Plug 'posva/vim-vue'
 call plug#end()
 
@@ -180,3 +181,5 @@ augroup rust
   autocmd FileType rust nnoremap <F6> :!cargo check <CR>
   autocmd FileType rust nnoremap <F7> :!cargo fmt <CR>
 augroup END
+
+" vim: set sw=2 ts=2 et:
