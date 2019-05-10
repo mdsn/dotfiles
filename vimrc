@@ -54,7 +54,7 @@ cnoremap jk <C-c>
 nnoremap j gj
 nnoremap k gk
 
-nnoremap <leader>c <C-w>c
+nnoremap <leader>wc <C-w>c
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -104,9 +104,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/src/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+  let $FZF_DEFAULT_OPTS = '--no-bold'
   nnoremap <leader>o :Files<CR>
+  command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
   nnoremap <leader>l :Buffers<CR>
   nnoremap <leader>ñ :History<CR>
+  nnoremap <leader>gl :BCommits<CR>
+  let g:fzf_commits_log_options = '--color=always --format="%C(yellow)%h%d%C(reset) %s %C(green)%cr"'
 Plug 'junegunn/limelight.vim'
   nnoremap <F10> :Limelight!!<CR>
 Plug 'junegunn/vim-peekaboo'
@@ -143,7 +148,7 @@ Plug 'romainl/vim-qf'
       autocmd!
       autocmd FileType qf setlocal wrap nonumber
   augroup END
- Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
 call plug#end()
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -166,7 +171,7 @@ augroup END
 augroup py
     autocmd!
     autocmd FileType python setlocal cc=80 ts=4 sw=4 expandtab
-    autocmd FileType python nnoremap <F7> :!isort %<CR>
+    autocmd FileType python nnoremap <F7> :!isort %<CR>:redraw!<CR>
 augroup END
 
 augroup vue
