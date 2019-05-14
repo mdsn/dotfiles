@@ -10,3 +10,5 @@ export WORKON_HOME=~/src/env
 source `which virtualenvwrapper.sh`
 
 export RIPGREP_CONFIG_PATH=~/etc/ripgreprc
+
+export FZF_DEFAULT_OPTS=--no-bold
