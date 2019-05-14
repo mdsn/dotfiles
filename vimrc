@@ -36,14 +36,13 @@ let mapleader = "\<Space>"
 nnoremap ñ :
 nnoremap Ñ :
 nnoremap <leader>- <C-w>_
-nnoremap <leader>q q:
 nnoremap <BS> <C-^>
 nnoremap <silent> <leader>z <C-w>z
 nnoremap <leader><leader> :noh<CR>
 command! -bar SC vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
 nnoremap <silent> <leader>n :SC<CR>
-nnoremap <leader>w :set list!<CR>
-nnoremap <silent> <leader>r :set wrap!<CR>
+nnoremap <leader>' :set list!<CR>
+nnoremap <silent> <leader>w :set wrap!<CR>
 nnoremap <silent> <leader>d :bp\|bd#<CR>
 nnoremap <leader>N :set number!<CR>
 
@@ -133,7 +132,7 @@ Plug 'junegunn/vim-after-object'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'Konfekt/FastFold'
 Plug 'romainl/vim-qf'
-  nmap Q <Plug>QfCtoggle
+  nmap <leader>q <Plug>QfCtoggle
   nmap <C-q> <Plug>QfLtoggle
   nmap Ç <Plug>QfSwitch
   nmap <Home> <Plug>QfCprevious
@@ -149,6 +148,11 @@ Plug 'romainl/vim-qf'
       autocmd FileType qf setlocal wrap nonumber
   augroup END
 Plug 'posva/vim-vue'
+Plug 'bfrg/vim-cpp-modern'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+  nmap <leader>t :BTags<CR>
+  nmap <leader>r :Tags<CR>
 call plug#end()
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -181,7 +185,6 @@ augroup vue
 augroup END
 
 augroup rust
-  set colorcolumn=100
   autocmd!
   autocmd FileType rust nnoremap <F5> :!cargo build <CR>
   autocmd FileType rust nnoremap <F6> :!cargo check <CR>
