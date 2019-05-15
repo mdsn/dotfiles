@@ -107,6 +107,7 @@ Plug 'junegunn/fzf.vim'
   nnoremap <leader>o :Files<CR>
   command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  nnoremap <leader>c :Commands<CR>
   nnoremap <leader>l :Buffers<CR>
   nnoremap <leader>ñ :History<CR>
   nnoremap <leader>gl :BCommits<CR>
@@ -116,7 +117,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'morhetz/gruvbox'
   let g:gruvbox_contrast_light = "soft"
-Plug 'jacoborus/tender.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rsi'
