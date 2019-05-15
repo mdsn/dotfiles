@@ -124,6 +124,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
   nnoremap <leader>gb :Gblame! --abbrev=8 --relative-date<CR>
   nnoremap <leader>gs :Gstatus<CR>
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-ipmotion'
   let g:ip_skipfold = 1

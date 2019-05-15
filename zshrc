@@ -52,7 +52,7 @@ alias gi=" git show"
 alias gl="git log --oneline"
 alias gll='git log --oneline --pretty="format:%C(auto,yellow)%h%C(auto,reset) %cn %C(auto,yellow)%cr%C(auto,reset)%C(auto,green)%d%C(auto,reset) %s"'
 
-alias ls=" ls -h"
+alias ls=" ls --color -h"
 alias l=" ls -l"
 alias s=ssh
 alias v=vim
