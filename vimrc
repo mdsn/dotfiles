@@ -31,6 +31,7 @@ set showbreak=..
 set linebreak
 set t_md=
 set colorcolumn=80
+set showcmd
 
 let mapleader = "\<Space>"
 nnoremap ñ :
@@ -105,8 +106,6 @@ Plug 'junegunn/fzf', { 'dir': '~/src/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let $FZF_DEFAULT_OPTS = '--no-bold'
   nnoremap <leader>o :Files<CR>
-  command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
   nnoremap <leader>c :Commands<CR>
   nnoremap <leader>l :Buffers<CR>
   nnoremap <leader>ñ :History<CR>
@@ -179,10 +178,14 @@ augroup py
     autocmd FileType python nnoremap <F7> :!isort %<CR>:redraw!<CR>
 augroup END
 
-augroup vue
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
+augroup js
     autocmd!
     autocmd FileType vue,javascript syntax sync fromstart
     autocmd FileType vue,javascript setlocal ts=2 sw=2 expandtab
+    autocmd FileType vue,javascript setlocal makeprg=eslint\ --format\ compact\ %
+    autocmd FileType vue,javascript nnoremap <F5> :make!<CR>
 augroup END
 
 augroup rust

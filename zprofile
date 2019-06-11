@@ -12,3 +12,5 @@ source `which virtualenvwrapper.sh`
 export RIPGREP_CONFIG_PATH=~/etc/ripgreprc
 
 export FZF_DEFAULT_OPTS=--no-bold
+
+if [ -x ~/bin/remap-keys.sh ] ; then ~/bin/remap-keys.sh ; fi
