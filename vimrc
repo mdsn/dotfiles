@@ -33,9 +33,12 @@ set t_md=
 set colorcolumn=80
 set showcmd
 
+if has("nvim")
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
+
 let mapleader = "\<Space>"
-nnoremap ñ :
-nnoremap Ñ :
 nnoremap <leader>- <C-w>_
 nnoremap <BS> <C-^>
 nnoremap <silent> <leader>z <C-w>z
@@ -110,9 +113,20 @@ Plug 'junegunn/fzf.vim'
   nnoremap <leader>l :Buffers<CR>
   nnoremap <leader>ñ :History<CR>
   nnoremap <leader>gl :BCommits<CR>
+  nnoremap <leader>s :Rg <C-R><C-W>
+
+  nmap <leader>t :BLines<CR>
+  nmap <leader>r :Tags<CR>
+  nnoremap <leader>f :call fzf#vim#tags(expand('<cword>'))<CR>
+
   let g:fzf_commits_log_options = '--color=always --format="%C(yellow)%h%d%C(reset) %s %C(green)%cr"'
 Plug 'junegunn/limelight.vim'
   nnoremap <F10> :Limelight!!<CR>
+Plug 'junegunn/goyo.vim'
+  nnoremap <F9> :Goyo<CR>
+  let g:goyo_height = "100%"
+  let g:goyo_linenr = 1
+
 Plug 'junegunn/vim-peekaboo'
 Plug 'morhetz/gruvbox'
   let g:gruvbox_contrast_light = "soft"
@@ -121,8 +135,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-  nnoremap <leader>gb :Gblame! --abbrev=8 --relative-date<CR>
-  nnoremap <leader>gs :Gstatus<CR>
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-ipmotion'
@@ -150,9 +162,10 @@ Plug 'romainl/vim-qf'
 Plug 'posva/vim-vue'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-  nmap <leader>t :BTags<CR>
-  nmap <leader>r :Tags<CR>
+Plug 'vim-python/python-syntax'
+  let g:python_version_2 = 1
+  let g:python_highlight_all = 1
+
 call plug#end()
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -163,6 +176,7 @@ colorscheme gruvbox
 augroup vim
   autocmd!
   autocmd FileType vim nnoremap <buffer> <F5> :so%<CR>
+  autocmd FileType vim setlocal ts=2 sw=2 expandtab cc=80
 augroup END
 
 augroup cpp
@@ -176,6 +190,7 @@ augroup py
     autocmd!
     autocmd FileType python setlocal cc=80 ts=4 sw=4 expandtab
     autocmd FileType python nnoremap <F7> :!isort %<CR>:redraw!<CR>
+    autocmd FileType python nnoremap <F8> :!black %<CR>
 augroup END
 
 set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m

@@ -1,2 +1,4 @@
 --colors
     match:style:nobold
+--ignore-file
+    /home/mdsn/etc/rgignore
