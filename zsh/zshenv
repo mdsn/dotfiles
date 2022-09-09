@@ -1,0 +1,4 @@
+EDITOR=nvim
+export EDITOR
+
+. "$HOME/.cargo/env"

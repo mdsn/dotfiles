@@ -1,0 +1,30 @@
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# add user functions to fpath
+if [[ -d ~/etc/zsh/fn ]] {
+    fpath=(~/etc/zsh/fn $fpath)
+}
+
+autoload -Uz compinit promptinit
+compinit
+promptinit
+prompt walters
+
+setopt interactivecomments
+unsetopt beep
+
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+
+alias ls=" ls --color -h"
+alias l=" ls -l"
+alias s=ssh
+alias v=nvim
+alias gd=" git diff"
+alias gs=" git status --short"
+alias gi=" git show"
+alias gl=" git log"
+alias gco="git checkout"
