@@ -10,6 +10,7 @@ return {
   use_fancy_tab_bar = false,
   window_decorations = "RESIZE",
   window_padding = { left = '1px', right = '1px', top = 0, bottom = 0 },
+  show_update_window = false,
 
   keys = {
     { key = '\\', mods = 'CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
